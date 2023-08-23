@@ -1,9 +1,9 @@
 {
-  "name": "vite-react-start",
+  "name": "goit-react-hw-07-phonebook",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://livegp.github.io/vite-react-start/",
+  "homepage": "https://livegp.github.io/goit-react-hw-07-phonebook/",
   "scripts": {
     "start": "vite",
     "build": "vite build",

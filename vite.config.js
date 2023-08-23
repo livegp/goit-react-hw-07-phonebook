@@ -40,5 +40,5 @@ export default defineConfig({
     reactClickToComponent(),
     Icons()
   ],
-  base: '/vite-react-start/' // має відповідати шляху в index.jsx
+  base: '/goit-react-hw-07-phonebook/' // має відповідати шляху в index.jsx
 });
