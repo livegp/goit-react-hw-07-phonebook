@@ -93,7 +93,6 @@ export const Container = styled.div`
 
 export const Logo = styled.div`
   order: 1;
-  margin-right: 30px;
   flex-grow: 0;
 
   a {
@@ -197,9 +196,5 @@ export const LoginBtn = styled.button`
     svg {
       stroke: #f7f7f7;
     }
-  }
-
-  @media (width <= 576px) {
-    display: none;
   }
 `;
