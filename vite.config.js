@@ -3,8 +3,7 @@ import react from '@vitejs/plugin-react-swc';
 import eslintPlugin from '@nabla/vite-plugin-eslint';
 import stylelint from 'vite-plugin-stylelint';
 import injectHTML from 'vite-plugin-html-inject';
-import Icons from 'unplugin-icons/vite';
-import FullReload from 'vite-plugin-full-reload';
+// import Icons from 'unplugin-icons/vite';
 import { ViteMinifyPlugin } from 'vite-plugin-minify';
 import webfontDownload from 'vite-plugin-webfont-dl';
 import imagePresets, { widthPreset } from 'vite-plugin-image-presets';
@@ -36,9 +35,8 @@ export default defineConfig({
       })
     }),
     injectHTML(),
-    FullReload(['./src/**/**.html']),
-    reactClickToComponent(),
-    Icons()
+    reactClickToComponent()
+    // Icons()
   ],
   base: '/goit-react-hw-07-phonebook/' // має відповідати шляху в index.jsx
 });
