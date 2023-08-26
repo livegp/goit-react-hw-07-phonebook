@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Form = styled.form`
-  margin: 0 10px;
+  color: #3b5998;
 `;
 
 export const List = styled.li`
@@ -24,19 +24,11 @@ export const Btn = styled.button`
   border: none;
   border-radius: 5px;
   padding: 10px;
+  margin-bottom: 10px;
   width: 100%;
   cursor: pointer;
 
   &:hover {
-    background-color: #f7f7f7;
+    background-color: #fff;
   }
-`;
-
-export const Title = styled.h1`
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 10px;
-  background-color: #3b5998;
-  color: #fff;
-  margin-bottom: 10px;
 `;

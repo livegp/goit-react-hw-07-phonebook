@@ -22,28 +22,30 @@ function ContactList() {
   };
 
   return (
-    <Table>
-      <Head>
-        <tr>
-          <th>Name</th>
-          <th>Number</th>
-          <th>x</th>
-        </tr>
-      </Head>
-      <tbody>
-        {visibleContactList.map(({ id, name, number }) => (
-          <tr key={id}>
-            <td>{name}</td>
-            <td>{number}</td>
-            <td>
-              <button type="button" onClick={() => handleDelete(id)}>
-                x
-              </button>
-            </td>
+    visibleContactList.length && (
+      <Table>
+        <Head>
+          <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>x</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </Head>
+        <tbody>
+          {visibleContactList.map(({ id, name, number }) => (
+            <tr key={id}>
+              <td>{name}</td>
+              <td>{number}</td>
+              <td>
+                <button type="button" onClick={() => handleDelete(id)}>
+                  x
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    )
   );
 }
 

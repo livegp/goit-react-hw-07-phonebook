@@ -4,7 +4,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 10px;
+  margin-bottom: 10px;
 
   labael {
     text-align: left;
@@ -18,13 +18,3 @@ const Form = styled.form`
 `;
 
 export default Form;
-
-export const SubTitle = styled.h2`
-  margin-top: 10px;
-  font-weight: 700;
-  margin-top: 10px;
-  padding: 10px;
-  text-transform: uppercase;
-  background-color: #3b5998;
-  color: #fff;
-`;

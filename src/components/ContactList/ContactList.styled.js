@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 export const Table = styled.table`
   margin: 0 auto;
-  color: #3b5998;
   width: 100%;
-  border-radius: 0 0 10px;
   text-align: center;
   box-shadow:
     0 1px 6px rgb(46 47 66 / 8%),
@@ -17,7 +15,7 @@ export const Table = styled.table`
     padding: 10px;
   }
 
-  td {
+  td:not(:last-child) {
     text-align: left;
   }
 
@@ -27,7 +25,7 @@ export const Table = styled.table`
   }
 
   tbody tr:nth-child(even) {
-    background-color: #f7f7f7;
+    background-color: #ffffff;
   }
 
   button {
