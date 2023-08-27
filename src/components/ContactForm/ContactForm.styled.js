@@ -4,6 +4,11 @@ export const Form = styled.form`
   color: #3b5998;
 `;
 
+export const Item = styled.ul`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const List = styled.li`
   display: flex;
   gap: 5px;

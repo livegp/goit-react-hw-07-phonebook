@@ -1,16 +1,15 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
-import { Btn, Form, List } from './ContactForm.styled';
-import { addContact, selectList } from '../../redux/listSlice';
+import { Btn, Form, Item, List } from './ContactForm.styled';
+import { useAddContactMutation } from '../../redux/contactsSlice';
 
 function ContactForm() {
-  const dispatch = useDispatch();
-  const contacts = useSelector(selectList);
-
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const [addContact, { isLoading: isAddLoading }] = useAddContactMutation();
 
   const nameId = nanoid();
   const numberId = nanoid();
@@ -23,28 +22,17 @@ function ContactForm() {
     }
   };
 
-  const handleSubmit = evt => {
+  const handleSubmit = async evt => {
     evt.preventDefault();
 
-    const isNameExist = contacts.some(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
-    );
+    const newData = { name, number };
 
-    if (isNameExist) {
-      alert(`${name} is already in contacts`);
-      return;
+    try {
+      await addContact(newData);
+      reset();
+    } catch (error) {
+      toast.error('Error adding contact:', error);
     }
-
-    const isNumberExist = contacts.some(contact => contact.number === number);
-
-    if (isNumberExist) {
-      alert(`The number ${number} is already in contacts`);
-      return;
-    }
-
-    const newData = { id: nanoid(5), name, number };
-    dispatch(addContact(newData));
-    reset();
   };
 
   const reset = () => {
@@ -54,7 +42,7 @@ function ContactForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <ul>
+      <Item>
         <List>
           <label htmlFor={nameId}>Name</label>
           <input
@@ -81,8 +69,10 @@ function ContactForm() {
             required
           />
         </List>
-      </ul>
-      <Btn type="submit">Add contact</Btn>
+      </Item>
+      <Btn type="submit" disabled={isAddLoading}>
+        {isAddLoading ? 'Adding...' : 'Add contact'}
+      </Btn>
     </Form>
   );
 }

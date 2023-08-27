@@ -1,51 +1,69 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import { Head, Table } from './ContactList.styled';
-import { selectFilter } from '../../redux/filterSlice';
-import { deleteContact, selectList } from '../../redux/listSlice';
+import {
+  useDeleteContactMutation,
+  useGetContactsQuery
+} from '../../redux/contactsSlice';
+import Loader from '../Loader/Loader';
 
 function ContactList() {
-  const contacts = useSelector(selectList);
-  const filter = useSelector(selectFilter);
-  const dispatch = useDispatch();
+  const {
+    data: contacts,
+    error: isGetError,
+    isLoading: isGetLoading
+  } = useGetContactsQuery();
+  const [deleteContact, { isLoading: isDeleteLoading }] =
+    useDeleteContactMutation();
 
-  const visibleContactList = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const handleDelete = async id => {
+    try {
+      await deleteContact(id);
+      toast.success('Contact deleted successfully');
+    } catch (error) {
+      toast.error('Error deleting contact:', error);
+    }
+  };
 
-  if (!visibleContactList.length) {
+  if (isGetLoading) {
+    return <Loader />;
+  }
+
+  if (isGetError) {
+    return toast.error('Error deleting contact:', isGetError);
+  }
+
+  if (!contacts.length) {
     return <p>No contacts</p>;
   }
 
-  const handleDelete = id => {
-    dispatch(deleteContact(id));
-  };
-
   return (
-    visibleContactList.length && (
-      <Table>
-        <Head>
-          <tr>
-            <th>Name</th>
-            <th>Number</th>
-            <th>x</th>
+    <Table>
+      <Head>
+        <tr>
+          <th>Name</th>
+          <th>Number</th>
+          <th>Delete</th>
+        </tr>
+      </Head>
+      <tbody>
+        {contacts.map(({ id, name, phone }) => (
+          <tr key={id}>
+            <td>{name}</td>
+            <td>{phone}</td>
+            <td>
+              <button
+                type="button"
+                disabled={isDeleteLoading}
+                onClick={() => handleDelete(id)}
+              >
+                x
+              </button>
+            </td>
           </tr>
-        </Head>
-        <tbody>
-          {visibleContactList.map(({ id, name, number }) => (
-            <tr key={id}>
-              <td>{name}</td>
-              <td>{number}</td>
-              <td>
-                <button type="button" onClick={() => handleDelete(id)}>
-                  x
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    )
+        ))}
+      </tbody>
+    </Table>
   );
 }
 

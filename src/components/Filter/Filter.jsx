@@ -1,15 +1,15 @@
-import { useSelector, useDispatch } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 
 import Form from './Filter.styled';
-import { selectFilter, setFilter } from '../../redux/filterSlice';
+// import { selectFilter, setFilter } from '../../redux/filterSlice';
 
 function Filter() {
-  const dispatch = useDispatch();
-  const filter = useSelector(selectFilter);
+  // const dispatch = useDispatch();
+  // const filter = useSelector(selectFilter);
 
-  const handleFilterChange = evt => {
-    dispatch(setFilter(evt.currentTarget.value));
-  };
+  // const handleFilterChange = evt => {
+  //   dispatch(setFilter(evt.currentTarget.value));
+  // };
 
   return (
     <Form>
@@ -17,8 +17,8 @@ function Filter() {
       <input
         type="text"
         name="filter"
-        value={filter}
-        onChange={handleFilterChange}
+        // value={filter}
+        // onChange={handleFilterChange}
       />
     </Form>
   );
