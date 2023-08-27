@@ -57,7 +57,7 @@ function ContactForm() {
           />
         </List>
         <List>
-          <label htmlFor={numberId}>Number</label>
+          <label htmlFor={numberId}>Phone</label>
           <input
             type="tel"
             id={numberId}

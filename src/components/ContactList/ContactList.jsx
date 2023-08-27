@@ -42,7 +42,7 @@ function ContactList() {
       <Head>
         <tr>
           <th>Name</th>
-          <th>Number</th>
+          <th>Phone</th>
           <th>Delete</th>
         </tr>
       </Head>
