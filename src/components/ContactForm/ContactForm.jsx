@@ -7,25 +7,25 @@ import { useAddContactMutation } from '../../redux/contactsSlice';
 
 function ContactForm() {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
 
   const [addContact, { isLoading: isAddLoading }] = useAddContactMutation();
 
   const nameId = nanoid();
-  const numberId = nanoid();
+  const phoneId = nanoid();
 
   const handleChange = ({ target: { name: inputName, value } }) => {
     if (inputName === 'name') {
       setName(value);
-    } else if (inputName === 'number') {
-      setNumber(value);
+    } else if (inputName === 'phone') {
+      setPhone(value);
     }
   };
 
   const handleSubmit = async evt => {
     evt.preventDefault();
 
-    const newData = { name, number };
+    const newData = { name, phone };
 
     try {
       await addContact(newData);
@@ -37,7 +37,7 @@ function ContactForm() {
 
   const reset = () => {
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -57,12 +57,12 @@ function ContactForm() {
           />
         </List>
         <List>
-          <label htmlFor={numberId}>Phone</label>
+          <label htmlFor={phoneId}>Phone</label>
           <input
             type="tel"
-            id={numberId}
-            name="number"
-            value={number}
+            id={phoneId}
+            name="phone"
+            value={phone}
             onChange={handleChange}
             pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
