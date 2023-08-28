@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Table = styled.table`
   margin: 0 auto;
+  table-layout: auto;
   width: 100%;
   text-align: center;
   box-shadow:
@@ -15,7 +16,15 @@ export const Table = styled.table`
     padding: 10px;
   }
 
-  td:not(:last-child) {
+  th:first-child {
+    width: 100%;
+  }
+
+  td:not(:first-child) {
+    white-space: nowrap;
+  }
+
+  td:nth-child(-n + 2) {
     text-align: left;
   }
 
