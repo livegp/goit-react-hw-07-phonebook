@@ -1,3 +1,4 @@
+import { TiDeleteOutline, TiEdit } from 'react-icons/ti';
 import { toast } from 'react-toastify';
 
 import { Head, Table } from './ContactList.styled';
@@ -43,7 +44,12 @@ function ContactList() {
         <tr>
           <th>Name</th>
           <th>Phone</th>
-          <th>Delete</th>
+          <th>
+            <TiEdit size={20} />
+          </th>
+          <th>
+            <TiDeleteOutline size={20} />
+          </th>
         </tr>
       </Head>
       <tbody>
@@ -52,12 +58,17 @@ function ContactList() {
             <td>{name}</td>
             <td>{phone}</td>
             <td>
+              <button type="button">
+                <TiEdit size={20} />
+              </button>
+            </td>
+            <td>
               <button
                 type="button"
                 disabled={isDeleteLoading}
                 onClick={() => handleDelete(id)}
               >
-                x
+                <TiDeleteOutline size={20} />
               </button>
             </td>
           </tr>
