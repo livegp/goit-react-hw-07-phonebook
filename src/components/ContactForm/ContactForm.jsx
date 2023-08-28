@@ -3,13 +3,17 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { Btn, Form, Item, List } from './ContactForm.styled';
-import { useAddContactMutation } from '../../redux/contactsSlice';
+import {
+  useAddContactMutation,
+  useGetContactsQuery
+} from '../../redux/contactsSlice';
 
 function ContactForm() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
   const [addContact, { isLoading: isAddLoading }] = useAddContactMutation();
+  const { data: contacts } = useGetContactsQuery();
 
   const nameId = nanoid();
   const phoneId = nanoid();
