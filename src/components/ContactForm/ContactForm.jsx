@@ -29,6 +29,22 @@ function ContactForm() {
   const handleSubmit = async evt => {
     evt.preventDefault();
 
+    const isNameExist = contacts.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (isNameExist) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
+
+    const isPhoneExist = contacts.some(contact => contact.phone === phone);
+
+    if (isPhoneExist) {
+      alert(`The number ${phone} is already in contacts`);
+      return;
+    }
+
     const newData = { name, phone };
 
     try {
