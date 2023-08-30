@@ -47,10 +47,6 @@ function ContactList() {
     return <p>No contacts</p>;
   }
 
-  // if (!contacts.length) {
-  //   return <p>No contacts</p>;
-  // }
-
   return (
     <Table>
       <Head>
