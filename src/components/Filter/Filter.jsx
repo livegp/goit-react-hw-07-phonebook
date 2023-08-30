@@ -1,11 +1,11 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Form from './Filter.styled';
-import { setFilter } from '../../redux/filterSlice';
+import { selectFilter, setFilter } from '../../redux/filterSlice';
 
 function Filter() {
   const dispatch = useDispatch();
+  const filter = useSelector(selectFilter);
 
   const handleFilterChange = evt => {
     dispatch(setFilter(evt.currentTarget.value));
@@ -14,7 +14,12 @@ function Filter() {
   return (
     <Form>
       <label htmlFor="filter">Find contacts by name</label>
-      <input type="text" name="filter" onChange={handleFilterChange} />
+      <input
+        type="text"
+        name="filter"
+        value={filter}
+        onChange={handleFilterChange}
+      />
     </Form>
   );
 }

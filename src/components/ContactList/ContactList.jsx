@@ -1,4 +1,5 @@
 import { TiDeleteOutline, TiEdit } from 'react-icons/ti';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import { Head, Table } from './ContactList.styled';
@@ -6,14 +7,18 @@ import {
   useDeleteContactMutation,
   useGetContactsQuery
 } from '../../redux/contactsSlice';
+import { selectFilter } from '../../redux/filterSlice';
 import Loader from '../Loader/Loader';
 
 function ContactList() {
+  const filter = useSelector(selectFilter);
+
   const {
     data: contacts,
     error: isGetError,
     isLoading: isGetLoading
   } = useGetContactsQuery();
+
   const [deleteContact, { isLoading: isDeleteLoading }] =
     useDeleteContactMutation();
 
@@ -34,9 +39,17 @@ function ContactList() {
     return toast.error('Error deleting contact:', isGetError);
   }
 
-  if (!contacts.length) {
+  const visibleContactList = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  if (!visibleContactList.length) {
     return <p>No contacts</p>;
   }
+
+  // if (!contacts.length) {
+  //   return <p>No contacts</p>;
+  // }
 
   return (
     <Table>
@@ -53,7 +66,7 @@ function ContactList() {
         </tr>
       </Head>
       <tbody>
-        {contacts.map(({ id, name, phone }) => (
+        {visibleContactList.map(({ id, name, phone }) => (
           <tr key={id}>
             <td>{name}</td>
             <td>{phone}</td>
