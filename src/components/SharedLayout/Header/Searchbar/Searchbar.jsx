@@ -7,7 +7,7 @@ import {
   SearchForm,
   SearchFormButton,
   SearchFormInput,
-  SearchFormLabel
+  SearchFormLabel,
 } from './Searchbar.styled';
 
 function Searchbar() {

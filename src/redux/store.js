@@ -6,12 +6,12 @@ import filterReducer from './filterSlice';
 export const store = configureStore({
   reducer: {
     [contactsApi.reducerPath]: contactsApi.reducer,
-    filter: filterReducer
+    filter: filterReducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware(),
-    contactsApi.middleware
-  ]
+    contactsApi.middleware,
+  ],
 });
 
 export default store;

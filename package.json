@@ -14,7 +14,8 @@
     "lint:st": "stylelint ./src/**/*.{css,scss,jsx}",
     "fix:st": "pnpm run lint:st -- --fix",
     "lint:es:st": "pnpm run lint:es && pnpm run lint:st",
-    "fix:es:st": "pnpm run lint:es -- --fix && pnpm run lint:st -- --fix"
+    "fix:es:st": "pnpm run lint:es -- --fix && pnpm run lint:st -- --fix",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@iconify/react": "^4.1.1",

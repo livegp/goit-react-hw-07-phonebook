@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { Head, Table } from './ContactList.styled';
 import {
   useDeleteContactMutation,
-  useGetContactsQuery
+  useGetContactsQuery,
 } from '../../redux/contactsSlice';
 import { selectFilter } from '../../redux/filterSlice';
 import Loader from '../Loader/Loader';
@@ -16,7 +16,7 @@ function ContactList() {
   const {
     data: contacts,
     error: isGetError,
-    isLoading: isGetLoading
+    isLoading: isGetLoading,
   } = useGetContactsQuery();
 
   const [deleteContact, { isLoading: isDeleteLoading }] =
@@ -40,7 +40,7 @@ function ContactList() {
   }
 
   const visibleContactList = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
+    contact.name.toLowerCase().includes(filter.toLowerCase()),
   );
 
   if (!visibleContactList.length) {

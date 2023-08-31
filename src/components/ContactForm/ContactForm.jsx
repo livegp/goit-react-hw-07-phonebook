@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { Btn, Form, Item, List } from './ContactForm.styled';
 import {
   useAddContactMutation,
-  useGetContactsQuery
+  useGetContactsQuery,
 } from '../../redux/contactsSlice';
 
 function ContactForm() {
@@ -30,7 +30,7 @@ function ContactForm() {
     evt.preventDefault();
 
     const isNameExist = contacts.some(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
+      contact => contact.name.toLowerCase() === name.toLowerCase(),
     );
 
     if (isNameExist) {

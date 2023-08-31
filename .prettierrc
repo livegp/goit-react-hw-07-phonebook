@@ -1,6 +1,6 @@
 {
   "arrowParens": "avoid",
-  "bracketSameLine": false,
+  "bracketSameLine": true,
   "bracketSpacing": true,
   "jsxSingleQuote": false,
   "printWidth": 80,
@@ -8,7 +8,7 @@
   "semi": true,
   "singleQuote": true,
   "tabWidth": 2,
-  "trailingComma": "none",
+  "trailingComma": "all",
   "tabs": false,
   "endOfLine": "auto"
 }
