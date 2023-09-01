@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import SharedLayout from '../SharedLayout/SharedLayout';
 
 const Loader = lazy(() => import('../Loader/Loader'));
-
 // const SharedLayout = lazy(() => import('../SharedLayout/SharedLayout'));
 const Home = lazy(() => import('../../pages/Home'));
 const NotFound = lazy(() => import('../../pages/NotFound'));
