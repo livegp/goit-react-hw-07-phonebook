@@ -12,7 +12,16 @@
   },
   "eslint.alwaysShowStatus": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll": true
   },
-  "terminal.integrated.fontFamily": "FiraCode Nerd Font"
+  "files.autoSave": "onFocusChange",
+  "stylelint.validate": ["css", "javascript", "typescript"],
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+  "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "vite.config.js, pnpm-lock.yaml, .stylelintrc, .stylelintignore, .eslintrc, .eslintignore, .eslintcache, .prettierrc, .prettierignore, .gitignore, .gitattributes, .swcrc, 6"
+  }
 }

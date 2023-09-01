@@ -26,8 +26,12 @@
       "files": ["**/*.scss"]
     },
     {
+      "customSyntax": "postcss-styled-components",
+      "files": ["**/*.{js,ts,jsx,tsx}"]
+    },
+    {
       "customSyntax": "postcss-styled-syntax",
-      "files": ["**/*.jsx"],
+      "files": ["**/*.{js,ts,jsx,tsx}"],
       "rules": {
         "function-name-case": [
           "lower",

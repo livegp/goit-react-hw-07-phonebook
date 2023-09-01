@@ -14,7 +14,8 @@
     "lint:st": "stylelint ./src/**/*.{css,scss,jsx}",
     "fix:st": "pnpm run lint:st -- --fix",
     "lint:es:st": "pnpm run lint:es && pnpm run lint:st",
-    "fix:es:st": "pnpm run lint:es -- --fix && pnpm run lint:st -- --fix"
+    "fix:es:st": "pnpm run lint:es -- --fix && pnpm run lint:st -- --fix",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@iconify/react": "^4.1.1",
@@ -70,6 +71,10 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "eslint-plugin-styled-components-a11y": "^2.1.31",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "postcss-styled-components": "^0.2.1",
+    "postcss-styled-syntax": "^0.4.0",
     "prettier": "^3.0.1",
     "prettier-plugin-style-order": "^0.2.2",
     "stylelint": "^15.10.2",
@@ -80,5 +85,10 @@
     "stylelint-order": "^6.0.3",
     "stylelint-scss": "^5.1.0",
     "terser": "^5.19.2"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.css": "stylelint --fix"
   }
 }
